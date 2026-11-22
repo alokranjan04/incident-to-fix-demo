@@ -20,8 +20,6 @@ def list_orders(status: str | None = None, limit: int = 20, offset: int = 0):
 @router.get("/{order_id}")
 def get_order(order_id: int):
     order = ORDERS.get(order_id)
-    if order is None:
-        raise HTTPException(status_code=404, detail="order not found")
     return order
 
 
