@@ -60,7 +60,6 @@ def cancel_order(order_id: int):
         raise HTTPException(status_code=409, detail="shipped orders cannot be cancelled")
     if order.status != "CANCELLED":
         order.status = "CANCELLED"
-        inventory.release(order.item_id, order.quantity)
     return order
 
 
