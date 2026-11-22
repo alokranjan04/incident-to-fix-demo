@@ -7,7 +7,7 @@ TAX_RATE = 0.05
 def apply_coupon(subtotal: float, coupon: str | None) -> float:
     if not coupon:
         return subtotal
-    pct = COUPONS.get(coupon.upper())
+    pct = COUPONS.get(coupon)
     if pct is None:
         raise ValueError(f"unknown coupon {coupon}")
     return subtotal * (1 - pct)
