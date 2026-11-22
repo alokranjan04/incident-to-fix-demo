@@ -22,4 +22,4 @@ def release(item_id: str, quantity: int) -> None:
 
 
 def low_stock(threshold: int) -> list[Product]:
-    return [p for p in PRODUCTS.values() if p.stock < threshold]
+    return [p for p in PRODUCTS.values() if p.stock > threshold]
