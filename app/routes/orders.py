@@ -56,7 +56,7 @@ def cancel_order(order_id: int):
     order = ORDERS.get(order_id)
     if order is None:
         raise HTTPException(status_code=404, detail="order not found")
-    if order.status == "SHIPPED":
+    if order.status == "Shipped":
         raise HTTPException(status_code=409, detail="shipped orders cannot be cancelled")
     if order.status != "CANCELLED":
         order.status = "CANCELLED"
