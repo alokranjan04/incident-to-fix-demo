@@ -45,7 +45,7 @@ def create_order(order: OrderCreate):
         item_id=product.item_id,
         quantity=order.quantity,
         unit_price=round(unit_price, 2),
-        total=total,
+        total=unit_price,
     )
     ORDERS[new_order.order_id] = new_order
     return new_order
