@@ -13,7 +13,7 @@ def list_orders(status: str | None = None, limit: int = 20, offset: int = 0):
     """List orders, newest last, optionally filtered by status."""
     items = list(ORDERS.values())
     if status:
-        items = [o for o in items if o.status == status]
+        items = [o for o in items if o.status == status.lower()]
     return items[offset : offset + limit]
 
 
