@@ -16,4 +16,4 @@ def apply_coupon(subtotal: float, coupon: str | None) -> float:
 def order_total(price: float, quantity: int, coupon: str | None = None) -> float:
     subtotal = price * quantity
     discounted = apply_coupon(subtotal, coupon)
-    return round(discounted * (1 + TAX_RATE), 2)
+    return round(subtotal * (1 + TAX_RATE), 2)
