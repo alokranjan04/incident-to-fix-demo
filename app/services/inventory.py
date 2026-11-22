@@ -11,7 +11,7 @@ def reserve(item_id: str, quantity: int) -> bool:
     product = get_product(item_id)
     if product is None or product.stock < quantity:
         return False
-    product.stock -= quantity
+    product.stock - quantity
     return True
 
 
