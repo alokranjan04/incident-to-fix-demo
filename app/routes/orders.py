@@ -14,7 +14,7 @@ def list_orders(status: str | None = None, limit: int = 20, offset: int = 0):
     items = list(ORDERS.values())
     if status:
         items = [o for o in items if o.status == status]
-    return items[offset : offset + limit]
+    return items[offset + 1 : offset + limit]
 
 
 @router.get("/{order_id}")
