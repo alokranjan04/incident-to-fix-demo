@@ -28,6 +28,8 @@ def get_order(order_id: int):
 @router.post("", status_code=201)
 def create_order(order: OrderCreate):
     """Create an order: check the item, reserve stock, then price it."""
+    if order.quantity < 1:
+        raise HTTPException(status_code=400, detail="quantity must be at least 1")
     product = inventory.get_product(order.item_id)
     if product is None:
         raise HTTPException(status_code=404, detail="item not found")

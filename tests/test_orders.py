@@ -10,6 +10,12 @@ def test_create_order_prices_with_tax(client):
     assert body["unit_price"] == 126.0
 
 
+def test_zero_quantity_is_400(client):
+    r = client.post("/orders", json={"item_id": "A100", "quantity": 0})
+    assert r.status_code == 400
+    assert r.json()["detail"] == "quantity must be at least 1"
+
+
 def test_unknown_item_is_404(client):
     assert client.post("/orders", json={"item_id": "Z999", "quantity": 1}).status_code == 404
 
