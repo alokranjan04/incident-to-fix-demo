@@ -18,6 +18,12 @@ def test_not_enough_stock_is_409(client):
     assert client.post("/orders", json={"item_id": "B200", "quantity": 4}).status_code == 409
 
 
+def test_zero_quantity_is_400(client):
+    r = client.post("/orders", json={"item_id": "A100", "quantity": 0})
+    assert r.status_code == 400
+    assert r.json()["detail"] == "quantity must be at least 1"
+
+
 def test_get_order(client):
     order_id = client.post("/orders", json={"item_id": "A100", "quantity": 1}).json()["order_id"]
     assert client.get(f"/orders/{order_id}").json()["item_id"] == "A100"
